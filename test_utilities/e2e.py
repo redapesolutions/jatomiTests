@@ -5,6 +5,7 @@ import inspect
 import datetime
 import django.conf
 import django.core.mail
+import django.test.utils
 
 class E2ETest(django.test.TestCase):
   def setUp(self):
@@ -57,20 +58,33 @@ def image_path(self, caller):
   return '{base}/{now}__{callingclass}__{caller}.png'.format(base=image_folder_path(), now=datetime.datetime.now().isoformat(), caller=caller, callingclass=self.__class__.__name__)
 
 def email_on_failure(original_function):
+  @django.test.utils.override_settings(EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend')
   def new_function(*args):
-    mail = django.core.mail.EmailMessage('Test failed', 'A test has failed', ['mathieu@redapesolutions.com'], ['mathieu@redapesolutions'])
-    mail.send()
+    self = args[0]
+    caller = 'TODO'
+    try:
+      original_function(*args)
+    except Exception, e:
+      mail = django.core.mail.EmailMessage('Test failed: {callingclass} - {caller}'.format(  caller=caller, callingclass=self.__class__.__name__ ), 'Test has failed at {0}'.format(datetime.datetime.now().isoformat()), 'hp@redapesolutions.com', django.conf.settings.E2E_TESTS['RECIPIENTS'])
+      if self._path_to_image:
+        with open(self._path_to_image, 'r') as f:
+          mail.attach('error.png', f.read(), 'image/png')
+      mail.send()
+      raise e
+      
   return new_function
 
 def snap_on_failure(original_function):
   def new_function(*args):
     self = args[0]
     caller = original_function.func_name
+    self._name_of_test = caller
     try:
       original_function(*args)
     except Exception, e:
-      self.image_path = image_path(self, caller)
-      self.browser.driver.save_screenshot(image_path)
+      self._path_to_image = image_path(self, caller)
+      self._name_of_test = caller
+      self.browser.driver.save_screenshot(self._path_to_image)
       raise e
 
   return new_function

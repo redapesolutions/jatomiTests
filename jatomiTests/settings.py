@@ -15,11 +15,12 @@ BASE_URL = 'http://staging.jatomifitness.com.my'
 
 E2E_TESTS = {
     'SNAPPER': {
-        'FOLDER_PATH': '/home/azureuser/'
+        'FOLDER_PATH': '/Users/redapesolutions/'
     },
     'BROWSER': {
         'DRIVER': 'firefox'
-    }
+    },
+    'RECIPIENTS': ['mathieu@redapesolutions.com']
 }
 
 # Quick-start development settings - unsuitable for production
@@ -36,9 +37,10 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'hp@redapesolutions.com'
 EMAIL_HOST_PASSWORD = 'Abcd123$'
+EMAIL_USE_TLS = True
 
 
 # Application definition
