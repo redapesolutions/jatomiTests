@@ -18,7 +18,7 @@ E2E_TESTS = {
         'FOLDER_PATH': '/home/azureuser/'
     },
     'BROWSER': {
-        'DRIVER': 'phantomjs'
+        'DRIVER': 'firefox'
     }
 }
 
