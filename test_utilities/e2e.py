@@ -4,10 +4,15 @@ import os
 import inspect
 import datetime
 import django.conf
+import django.core.mail
 
 class E2ETest(django.test.TestCase):
   def setUp(self):
-    self.browser = splinter.Browser('chrome')
+    try:
+      driver = django.conf.settings.E2E_TESTS['BROWSER']['DRIVER']
+    except:
+      driver = 'chrome'
+    self.browser = splinter.Browser(driver)
     self.browser.driver.set_window_size(*self.size)
 
   @property
@@ -51,6 +56,12 @@ def image_folder_path():
 def image_path(self, caller):
   return '{base}/{now}__{callingclass}__{caller}.png'.format(base=image_folder_path(), now=datetime.datetime.now().isoformat(), caller=caller, callingclass=self.__class__.__name__)
 
+def email_on_failure(original_function):
+  def new_function(*args):
+    mail = django.core.mail.EmailMessage('Test failed', 'A test has failed', ['mathieu@redapesolutions.com'], ['mathieu@redapesolutions'])
+    mail.send()
+  return new_function
+
 def snap_on_failure(original_function):
   def new_function(*args):
     self = args[0]
@@ -58,7 +69,8 @@ def snap_on_failure(original_function):
     try:
       original_function(*args)
     except Exception, e:
-      self.browser.driver.save_screenshot(image_path(self, caller))
+      self.image_path = image_path(self, caller)
+      self.browser.driver.save_screenshot(image_path)
       raise e
 
   return new_function

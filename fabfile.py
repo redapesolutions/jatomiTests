@@ -12,17 +12,17 @@ from fabric.colors import *
 # from theartling.local_settings import PEM_KEY_DIR
 PEM_KEY_DIR = '/Users/redapesolutions/Downloads/theartling.pem'
 
-env.user = 'ubuntu'
+env.user = 'azureuser'
 # Staging
-env.hosts = ['54.251.247.163']
+env.hosts = ['jatomi-tests.cloudapp.net']
 # env.hosts = []
 # Production
 # env.hosts.append('54.251.39.22')
 
 env.key_filename = PEM_KEY_DIR
 env.forward_agent = True
-env.directory = '/home/ubuntu/theartling'
-env.activate = 'source /home/ubuntu/theartling_env/bin/activate'
+env.directory = '/home/azureuser/jatomiTests'
+env.activate = 'source /home/azureuser/env/bin/activate'
 
 @_contextmanager
 def virtualenv():
@@ -36,8 +36,7 @@ def git_reset(where):
 
 def git_pull(branch):
     with cd('%s' % env.directory):
-        run("git checkout %s" % branch)
-        run("git pull --no-edit origin %s" % branch)
+        run("git pull origin %s" % branch)
 
 def git_create(branch):
     with cd('%s' % env.directory):
@@ -58,19 +57,21 @@ def collectstatic():
 def supervisor_restart_all():
     sudo('supervisorctl restart all')
 
-def restart_nginx():
-    sudo('service nginx restart')
+def run_e2e_tests():
+    with cd('%s' % env.directory):
+        run('python manage.py test tests')
 
 def deploy():
-    print(cyan('➜   Connected to The Artling instance....'))
+    print(cyan('➜   Connected to Jatomi Tests instance....'))
     with virtualenv():
         # git_pull('PaypalDev')
         # git_create('Books')
-        git_pull('Books')
-        # install_requirements()
+        git_pull('master')
+        install_requirements()
         # git_reset('2c9232b')
         # migrate()
-        collectstatic()
-        supervisor_restart_all()
-        restart_nginx()
-    print(green('\n➜  Deployment succesful! kthnxbye'))
+        # collectstatic()
+        # supervisor_restart_all()
+        # restart_nginx()
+        run_e2e_tests()
+    print(green('\n➜  Deployment succesful!'))

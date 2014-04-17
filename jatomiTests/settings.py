@@ -11,7 +11,16 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_URL = 'http://staging.jatomifitness.com.my'
 
+E2E_TESTS = {
+    'SNAPPER': {
+        'FOLDER_PATH': '/home/azureuser/'
+    },
+    'BROWSER': {
+        'DRIVER': 'phantomjs'
+    }
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -25,6 +34,11 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'hp@redapesolutions.com'
+EMAIL_HOST_PASSWORD = 'Abcd123$'
 
 
 # Application definition
