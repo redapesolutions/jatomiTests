@@ -13,7 +13,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_failed_login(self):
+  def test_failed_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     browser.fill('name','mathieu')
@@ -31,7 +31,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_success_login(self):
+  def test_success_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     browser.fill('name','jatomitest@gmail.com')
