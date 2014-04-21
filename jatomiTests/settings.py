@@ -15,12 +15,12 @@ BASE_URL = 'http://staging.jatomifitness.com.my'
 
 E2E_TESTS = {
     'SNAPPER': {
-        'FOLDER_PATH': '/Users/redapesolutions/'
+        'FOLDER_PATH': '/Users/nasha_000/Desktop/error/'
     },
     'BROWSER': {
         'DRIVER': 'firefox'
     },
-    'RECIPIENTS': ['mathieu@redapesolutions.com']
+    'RECIPIENTS': ['navid@redapesolutions.com']
 }
 
 # Quick-start development settings - unsuitable for production
