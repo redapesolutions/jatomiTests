@@ -27,7 +27,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     message_box = browser.find_by_css('.messages')[0]
     self.assertTrue(message_box.has_class('error'))
-    self.assertTrue('Sorrry' in message_box.text)
+    self.assertTrue('Sorry' in message_box.text)
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
@@ -44,51 +44,51 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'en/dashboard/overview'))
 
 
-  @test_utilities.e2e.email_on_failure
-  @test_utilities.e2e.snap_on_failure
-  def _test_list_clubs(self):
-    browser = self.browser
-    browser.click_link_by_text('Find a Club')
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/fitness-clubs'))
-    # self.assertTrue("Clubs" in browser.title)
-    four_rows = browser.find_by_css(".views-row")
-    self.assertEqual(four_rows.__len__(), 4)
+  # @test_utilities.e2e.email_on_failure
+  # @test_utilities.e2e.snap_on_failure
+  # def _test_list_clubs(self):
+  #   browser = self.browser
+  #   browser.click_link_by_text('Find a Club')
+  #   self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/fitness-clubs'))
+  #   # self.assertTrue("Clubs" in browser.title)
+  #   four_rows = browser.find_by_css(".views-row")
+  #   self.assertEqual(four_rows.__len__(), 4)
 
-    for row in four_rows:
-      self.assertTrue(row.find_by_tag("img")[0].visible)
-      the_button = row.find_by_css(".get-your-guest-pass")
-      self.assertEqual(the_button.__len__(), 1)
+  #   for row in four_rows:
+  #     self.assertTrue(row.find_by_tag("img")[0].visible)
+  #     the_button = row.find_by_css(".get-your-guest-pass")
+  #     self.assertEqual(the_button.__len__(), 1)
 
-  @test_utilities.e2e.email_on_failure
-  @test_utilities.e2e.snap_on_failure
-  def test_registration_toggle_images(self):
-    browser = self.browser  
-    browser.click_link_by_text('Sign up')
-    time.sleep(18)
-    four_rows = browser.find_by_css('.pageRow')
-    for row in four_rows:
-      four_images = row.find_by_css('img.rowImg')
-      for image in four_images:
-        if image.has_class("activeImg"):
-          self.assertFalse(image.visible)
-        else:
-          self.assertTrue(image.visible)
+  # @test_utilities.e2e.email_on_failure
+  # @test_utilities.e2e.snap_on_failure
+  # def test_registration_toggle_images(self):
+  #   browser = self.browser  
+  #   browser.click_link_by_text('Sign up')
+  #   time.sleep(18)
+  #   four_rows = browser.find_by_css('.pageRow')
+  #   for row in four_rows:
+  #     four_images = row.find_by_css('img.rowImg')
+  #     for image in four_images:
+  #       if image.has_class("activeImg"):
+  #         self.assertFalse(image.visible)
+  #       else:
+  #         self.assertTrue(image.visible)
 
-      # Click on first col. expect color on first column only
-      four_images[0].click()
-      time.sleep(0.1)
-      self.assertTrue(four_images[1].visible)
-      self.assertFalse(four_images[3].visible)
+  #     # Click on first col. expect color on first column only
+  #     four_images[0].click()
+  #     time.sleep(0.1)
+  #     self.assertTrue(four_images[1].visible)
+  #     self.assertFalse(four_images[3].visible)
 
-      four_images[2].click()
-      time.sleep(0.1)
-      self.assertFalse(four_images[1].visible)
-      self.assertTrue(four_images[3].visible)
+  #     four_images[2].click()
+  #     time.sleep(0.1)
+  #     self.assertFalse(four_images[1].visible)
+  #     self.assertTrue(four_images[3].visible)
 
-      four_images[0].click()
-      time.sleep(0.1)
-      self.assertTrue(four_images[1].visible)
-      self.assertFalse(four_images[3].visible)
+  #     four_images[0].click()
+  #     time.sleep(0.1)
+  #     self.assertTrue(four_images[1].visible)
+  #     self.assertFalse(four_images[3].visible)
 
 
   def tearDown(self):
