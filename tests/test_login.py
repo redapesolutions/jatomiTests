@@ -13,7 +13,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_failed_login(self):
+  def _test_failed_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     browser.fill('name','mathieu')
@@ -28,10 +28,25 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     message_box = browser.find_by_css('.messages')[0]
     self.assertTrue(message_box.has_class('error'))
     self.assertTrue('Sorry' in message_box.text)
+  
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def test_success_login(self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
+
+    login_button = browser.find_by_id("edit-submit")[0]
+
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_list_clubs(self):
+  def _test_list_clubs(self):
     browser = self.browser
     browser.click_link_by_text('Find a Club')
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/fitness-clubs'))
@@ -46,7 +61,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_registration_toggle_images(self):
+  def _test_registration_toggle_images(self):
     browser = self.browser  
     browser.click_link_by_text('Sign up')
     time.sleep(18)
