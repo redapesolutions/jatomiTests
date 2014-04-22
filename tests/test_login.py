@@ -31,7 +31,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_success_login(self):
+  def _test_success_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     browser.fill('name','jatomitest@gmail.com')
@@ -43,6 +43,25 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
 
+    @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def test_success_login_download_contract(self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
+
+    login_button = browser.find_by_id("edit-submit")[0]
+
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+
+    download_button = browser.find_by_css('.btn-o pdf')
+
+    download_button.click()
+
+    
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
