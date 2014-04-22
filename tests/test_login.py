@@ -12,7 +12,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.browser.visit('{0}/{1}'.format(base_url, ''))
 
   @test_utilities.e2e.email_on_failure
-  @test_utilities.e2e.snap_oqn_failure
+  @test_utilities.e2e.snap_on_failure
   def test_failed_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
@@ -31,7 +31,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_list_clubs(self):
+  def test_list_clubs(self):
     browser = self.browser
     browser.click_link_by_text('Find a Club')
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/fitness-clubs'))
