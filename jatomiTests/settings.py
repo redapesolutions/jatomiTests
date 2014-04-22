@@ -15,7 +15,7 @@ BASE_URL = 'http://staging.jatomifitness.com.my'
 
 E2E_TESTS = {
     'SNAPPER': {
-        'FOLDER_PATH': '/Users/nasha_000/Desktop/error/'
+        'FOLDER_PATH': '/home/navid/Desktop/'
     },
     'BROWSER': {
         'DRIVER': 'firefox'
