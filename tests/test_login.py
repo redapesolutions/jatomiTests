@@ -57,7 +57,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     login_button = browser.find_by_id("edit-submit")[0]
     login_button.click()
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'en/dashboard/overview'))
     
     time.sleep(30)
     download_button = browser.find_by_text(" Contract Download ")
