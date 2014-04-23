@@ -60,7 +60,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
     
-    time.sleep(20)
+    time.sleep(15)
     overview_button = browser.find_by_id('SS')
     overview_button.click()
 
@@ -71,7 +71,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     download_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/pdf/Tom.pdf'))
     browser.back()
-    
+
+    time.sleep(15)
     topUp_button = browser.find_by_id('topUp')
     topUp_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
