@@ -31,7 +31,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_success_login(self):
+  def test_success_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     browser.fill('name','jatomitest@gmail.com')
@@ -45,15 +45,12 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_success_login_download_contract(self):
+  def _test_success_login_download_contract(self):
     browser = self.browser
     browser.click_link_by_text("Login")
-    username = 'jatomitest@gmail.com'
-    password = 'pleaseohplease'
 
-    browser.fill(browser.find_by_id('edit-name'),'jatomitest@gmail.com')
-    browser.fill(browser.find_by_id('edit-pass'),'pleaseohplease')
-    
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
 
     login_button = browser.find_by_id("edit-submit")[0]
 
