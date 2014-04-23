@@ -16,6 +16,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   def test_failed_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
+    time.sleep(18)
     browser.fill('name','mathieu')
     browser.fill('pass','abcd1234')
 
