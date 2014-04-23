@@ -48,8 +48,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   def test_success_login_download_contract(self):
     browser = self.browser
     browser.click_link_by_text("Login")
-    username = jatomitest@gmail.com
-    password = pleaseohplease
+    username = 'jatomitest@gmail.com'
+    password = 'pleaseohplease'
 
     # browser.fill('name','jatomitest@gmail.com')
     # browser.fill('pass','pleaseohplease')
