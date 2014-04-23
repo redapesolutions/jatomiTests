@@ -67,8 +67,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     Ok_button = browser.find_by_id('Okay')
     Ok_button.click()
   
-    # download_button = browser.find_by_css(".membershipOverview .pdf ")
-    # download_button.click()
+    download_button = browser.find_by_css('.membershipOverview .pdf')
+    download_button.click()
      
 
     topUp_button = browser.find_by_id('topUp')
