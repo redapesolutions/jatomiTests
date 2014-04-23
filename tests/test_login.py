@@ -69,8 +69,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
     download_button = browser.find_by_css('.membershipOverview .pdf')
     download_button.click()
-     
-
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/pdf/Tom.pdf'))
+    browser.back()
+    
     topUp_button = browser.find_by_id('topUp')
     topUp_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
