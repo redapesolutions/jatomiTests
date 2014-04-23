@@ -61,10 +61,10 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     
     time.sleep(30)
     download_button = browser.find_by_text(" Contract Download ")
-    DLlink_found = browser.find_link_by_partial_href('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
+    # DLlink_found = browser.find_link_by_partial_href('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
     download_button.click()
-    var= 'http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856'
-    self.assertEqual(var,DLlink_found)
+    # var= 'http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856'
+    # self.assertEqual(var,DLlink_found)
     
 
   @test_utilities.e2e.email_on_failure
