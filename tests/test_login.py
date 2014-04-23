@@ -59,9 +59,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     login_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
     
-    time.sleep(18)
-    download_button = browser.find_by_text("Contract Download")
-    DLlink_found = browser.find_link_by_text('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
+    time.sleep(30)
+    download_button = browser.find_by_text(" Contract Download ")
+    DLlink_found = browser.find_link_by_href('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
     download_button.click()
     var= 'http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856'
     self.assertEqual(var,DLlink_found)
