@@ -43,7 +43,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
 
-    @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def test_success_login_download_contract(self):
     browser = self.browser
@@ -57,10 +57,14 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
 
-    download_button = browser.find_by_css('.btn-o pdf')
+    download_button = browser.find_by_text("Contract Download")
 
+    DLlink_found = browser.find_link_by_text('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
+    
     download_button.click()
-
+    var= 'http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856'
+   
+    self.assertEqual(var,DLlink_found)
     
 
   @test_utilities.e2e.email_on_failure
