@@ -13,7 +13,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_failed_login(self):
+  def _test_failed_login(self):
     browser = self.browser
     browser.click_link_by_text("Login")
     time.sleep(18)
@@ -47,26 +47,23 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_success_login_download_contract(self):
+  def test_success_login_download_contract(self):
     browser = self.browser
     browser.click_link_by_text("Login")
-
+    
+    time.sleep(18)
     browser.fill('name','jatomitest@gmail.com')
     browser.fill('pass','pleaseohplease')
 
     login_button = browser.find_by_id("edit-submit")[0]
-
     login_button.click()
-
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
-
-    download_button = browser.find_by_text("Contract Download")
-
-    DLlink_found = browser.find_link_by_text('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
     
+    time.sleep(18)
+    download_button = browser.find_by_text("Contract Download")
+    DLlink_found = browser.find_link_by_text('http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856')
     download_button.click()
     var= 'http://staging.jatomifitness.com.my/jatomi/sites/all/modules/jatomi/user_dashboard/templates/Contractpdf/examples/example02.php?userid=%20856'
-   
     self.assertEqual(var,DLlink_found)
     
 
