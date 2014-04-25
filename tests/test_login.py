@@ -101,11 +101,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_dropdown_button = browser.find_by_id('edit-amount')
     top_up_dropdown_button.click()
     top_up_dropdown_button.select(value=50)
-    
-    
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up#overlay=en/top_up_confirmation/50/jatomitest%2540gmail.com')) 
-    time.sleep(15)
+    top_up_submit_button.click()
+    time.sleep(20)
     top_up_accept_button = browser.find_by_href('edit-amounthttp://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=240&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
     top_up_accept_button.click()
     time.sleep(15)
