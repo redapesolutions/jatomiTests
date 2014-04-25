@@ -98,9 +98,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
     
     time.sleep(20)
-    top_up_dropdown_button = browser.find_by_id('edit-amount')
-    top_up_dropdown_button.click()
-    top_up_dropdown_button.select(value=50).click()
+    select = Select(browser.find_element_by_id("edit-amount"))
+    select.select_by_visible_text("RM50")
+
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
     top_up_submit_button.click()
     time.sleep(20)
