@@ -100,7 +100,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(20)
     top_up_dropdown_button = browser.find_by_id('edit-amount')
     top_up_dropdown_button.click()
-    top_up_dropdown_button.select_by_value("50")
+    top_up_dropdown_button.select.select_by_value("50")
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
     top_up_submit_button.click()
     time.sleep(20)
