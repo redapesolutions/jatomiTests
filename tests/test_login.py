@@ -47,7 +47,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_success_login_download_contract(self):
+  def _test_Scenario_1_2_3 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -76,8 +76,45 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     topUp_button = browser.find_by_id('topUp')
     topUp_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
+  
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def test_Scenario_4 (self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
+    
+    time.sleep(18)
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
+
+    login_button = browser.find_by_id("edit-submit")[0]
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    
+    time.sleep(20)
+    topUp_button = browser.find_by_id('topUp')
+    topUp_button.click()
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
+    
+    time.sleep(20)
+    top_up_dropdown_button = browser.find_by_id('edit-amount')
+    top_up_dropdown_button.click()
+    top_up_dropdown_button.select('value'=50)
     
     
+    top_up_submit_button = browser.find_by_id('edit-topupsubmit')
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up#overlay=en/top_up_confirmation/50/jatomitest%2540gmail.com')) 
+    time.sleep(15)
+    top_up_accept_button = browser.find_by_href('edit-amounthttp://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=240&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
+    top_up_accept_button.click()
+    time.sleep(15)
+    self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
+    
+    
+    
+
+
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
