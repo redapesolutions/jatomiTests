@@ -79,7 +79,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_4 (self):
+  def _test_Scenario_4 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -101,7 +101,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.select("amount","50")
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
     top_up_submit_button.click()
-    time.sleep(10)
+    time.sleep(20)
     top_up_accept_button = browser.find_by_text("Proceed")
     top_up_accept_button.click()
     # top_up_cancel_button = browser.find_by_value('Cancel')
@@ -109,10 +109,90 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     time.sleep(15)
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
+  
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def _test_Scenario_5 (self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
     
-    
-    
+    time.sleep(18)
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
 
+    login_button = browser.find_by_id("edit-submit")[0]
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    
+    time.sleep(10)
+    topUp_button = browser.find_by_id('topUp')
+    topUp_button.click()
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
+    
+    time.sleep(10)
+    browser.select("amount","50")
+    top_up_submit_button = browser.find_by_id('edit-topupsubmit')
+    top_up_submit_button.click()
+    time.sleep(20)
+
+    top_up_cancel_button = browser.find_by_value('Cancel')
+    top_up_cancel_button.click()
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))  
+  
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def _test_Scenario_6 (self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
+    
+    time.sleep(18)
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
+
+    login_button = browser.find_by_id("edit-submit")[0]
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    
+    time.sleep(10)
+    topUp_button = browser.find_by_id('topUp')
+    topUp_button.click()
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up')) 
+    time.sleep(15)
+    browser.fill('last_name','Testing88888')
+    browser.fill('email','Testing88888@gmail.com') 
+    browser.select("amount","50")
+    top_up_submit_button = browser.find_by_id('edit-friendssubmit')
+    top_up_submit_button.click()
+    alert_button = browser.find_by_id('alertify-ok').click()
+
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def test_Scenario_7 (self):
+    browser = self.browser
+    browser.click_link_by_text("Login")
+    
+    time.sleep(18)
+    browser.fill('name','jatomitest@gmail.com')
+    browser.fill('pass','pleaseohplease')
+
+    login_button = browser.find_by_id("edit-submit")[0]
+    login_button.click()
+
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    
+    time.sleep(10)
+    topUp_button = browser.find_by_id('topUp')
+    topUp_button.click()
+    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up')) 
+    time.sleep(15)
+    browser.fill('last_name','Testing88888')
+    browser.fill('email','Testing88@gmail.com') 
+    browser.select("amount","50")
+    top_up_submit_button = browser.find_by_id('edit-friendssubmit')
+    top_up_submit_button.click()
+    alert_button = browser.find_by_id('alertify-ok').click()
 
 
   @test_utilities.e2e.email_on_failure
