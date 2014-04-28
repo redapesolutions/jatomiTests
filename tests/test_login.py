@@ -102,8 +102,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
     top_up_submit_button.click()
     time.sleep(10)
-    browser.click_link_by_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=330&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
-    # top_up_accept_button.click()
+    top_up_accept_button = browser.find_by_text("Proceed")
+    top_up_accept_button.click()
     # top_up_cancel_button = browser.find_by_value('Cancel')
     # top_up_cancel_button.click()
 
