@@ -102,10 +102,10 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_submit_button = browser.find_by_id('edit-topupsubmit')
     top_up_submit_button.click()
     time.sleep(10)
-    #top_up_accept_button = click_link_by_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=330&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
+    browser.click_link_by_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=330&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
     # top_up_accept_button.click()
-    top_up_cancel_button = browser.find_by_value('Cancel')
-    top_up_cancel_button.click()
+    # top_up_cancel_button = browser.find_by_value('Cancel')
+    # top_up_cancel_button.click()
 
     time.sleep(15)
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
