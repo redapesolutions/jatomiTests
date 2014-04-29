@@ -72,7 +72,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(20)
     #browser.click_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=560&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
     #browser.find_link_by_text('Proceed').click()
-    accept_button = browser.find_by_css('.confirmation_proceed.form-submit')
+    #accept_button = browser.find_by_css('.confirmation_proceed.form-submit')
+    accept_button = browser.find_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php')
     accept_button.click()
     
 
