@@ -136,7 +136,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(15)
     browser.fill('last_name','Testing88888')
     browser.fill('email','Testing88888@gmail.com.my') 
-    browser.select("amount","50").last
+    second_dropdown = browser.find_option_by_id('edit-amount--2')
+    second_dropdown.select("amount","50")
     top_up_submit_button = browser.find_by_id('edit-friendssubmit')
     top_up_submit_button.click()
     alert_button = browser.find_by_id('alertify-ok').click()
