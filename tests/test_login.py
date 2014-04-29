@@ -70,8 +70,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_submit_button.click()
     
     time.sleep(20)
-    browser.click_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=560&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
-    #top_up_accept_button = browser.find_by_text("Proceed")
+    #browser.click_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=560&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
+    browser.find_link_by_text('Proceed').first.click()
     #top_up_accept_button.click()
 
     time.sleep(15)
