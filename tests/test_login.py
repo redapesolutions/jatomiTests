@@ -43,7 +43,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     topUp_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))
   
-  # Top-up own wristband – Submit 
+ 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def test_Scenario_4 (self):
@@ -77,7 +77,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(15)
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
   
-  #Top-up own wristband – Cancel 
+  
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_5 (self):
@@ -108,7 +108,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_cancel_button.click()
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/top_up'))  
   
-  #Top-up your friends wristband-Submit
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_6 (self):
@@ -138,7 +138,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     alert_button = browser.find_by_id('alertify-ok').click()
 
   
-  #Top-up your friends wristband-Cancel
+ 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_7 (self):
@@ -166,7 +166,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     top_up_submit_button.click()
     alert_button = browser.find_by_id('alertify-ok').click()
 
-  #Change of email
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_8 (self):
@@ -194,7 +194,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
 
   
-  #Display Picture-OK. the test need to click on browse button and select an image
+  
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_9 (self):
@@ -214,7 +214,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
     
   
-  #Display Picture-Cancel
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_10 (self):
@@ -233,8 +233,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
  
-  
-  #Change Password
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_11 (self):
@@ -261,7 +260,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("OK")
 
   
-  #Add-on Management Purchasing
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_12 (self):
@@ -288,7 +287,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
 
   
-  #Freeze / how can i fill in the date that pops up?
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_13 (self):
@@ -315,7 +314,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_value("Proceed")
 
   
-  #Cancel / am i findign the check box correctly 
+ 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_13_13 (self):
@@ -342,7 +341,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_id("um_Submit2")
 
   
-  #Buy PT Session / am i findign the image correctly on the page 
+  
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_14 (self):
@@ -367,7 +366,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(10)
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
   
-  #Book Personal Training / how can i fill in a calender? 
+
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_15 (self):
@@ -391,7 +390,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
 
 
-  # Interest & Goals Setting
+ 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_16 (self):
