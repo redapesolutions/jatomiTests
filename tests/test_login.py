@@ -46,7 +46,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
  
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_4 (self):
+  def _test_Scenario_4 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -72,8 +72,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     time.sleep(20)
     #browser.click_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php?Amount=50&amp;PaymentId=560&amp;UserEmail=jatomitest@gmail.com&amp;UserContact=856&amp;Email=jatomitest@gmail.com')
     #browser.find_link_by_text('Proceed').click()
-    #accept_button = browser.find_by_css('.confirmation_proceed.form-submit')
-    accept_button = browser.find_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php')
+    accept_button = browser.find_by_class('confirmation_proceed')
+    print accept_button
+    # accept_button = browser.find_link_by_partial_href('http://dev.jatomifitness.com.my/jatomi/myPHP/buytopup.php')
     accept_button.click()
     
 
@@ -114,7 +115,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_6 (self):
+  def test_Scenario_6 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
