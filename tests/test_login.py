@@ -174,7 +174,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_8 (self):
+  def _test_Scenario_8 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -189,7 +189,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
-    browser.click_link_by_class("Emailchange")
+    browser.click_link_by_href("http://dev.jatomifitness.com.my/jatomi/en/change/email")
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/change/email'))
     time.sleep(10)
     browser.fill('current_email','jatomitest@gmail.com')
@@ -202,7 +202,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_9 (self):
+  def test_Scenario_9 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -217,6 +217,10 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
+    browser.attach_file('file', '/home/navid/Desktop/error/test.jpg')
+    browser.click_link_by_text("edit-submit")
+    browser.click_link_by_text("alertify-ok")
+    
     
   
 
