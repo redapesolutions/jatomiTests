@@ -115,7 +115,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_6 (self):
+  def _test_Scenario_6 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -189,7 +189,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
-    browser.click_link_by_text("Change email")
+    browser.click_link_by_class("Emailchange")
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/change/email'))
     time.sleep(10)
     browser.fill('current_email','jatomitest@gmail.com')
