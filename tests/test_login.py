@@ -217,7 +217,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
-    browser.attach_file('file', '/home/navid/Desktop/error/test.jpg')
+    browser.attach_file('photo', '/home/navid/Desktop/error/test.jpg')
     browser.click_link_by_text("edit-submit")
     browser.click_link_by_text("alertify-ok")
     
