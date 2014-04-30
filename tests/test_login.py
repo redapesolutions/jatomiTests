@@ -353,13 +353,14 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
     leave_button = browser.find_by_css(".um_Cancel").click()
     
-    time.sleep(5)
-    leave_confirm_button = browser.find_by_id("um_SubmitQ").click()
+    time.sleep(10)
+    leave_confirm_button = browser.find_by_id('um_SubmitQ').click()
     
     time.sleep(5)
     element8 = find_by_id(choices_8).check()
-    leave_submit_button = browser.find_by_id("um_Submit2").click()
-
+    leave_submit_button = browser.find_by_id('um_Submit2').click()
+    leave_submit_OK_button = browser.find_by_id('alertify-ok').click()
+    leave_submit_OK_button = browser.find_by_id('alertify-ok').click()
   
   
   @test_utilities.e2e.email_on_failure
