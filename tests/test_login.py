@@ -272,7 +272,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_12 (self):
+  def _test_Scenario_12 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -303,7 +303,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_13 (self):
+  def test_Scenario_13 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -318,12 +318,13 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     browser.click_link_by_text("Manage Membership")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
-    browser.click_link_by_text("Freeze")
+    freeze_button = browser.find_by_css(".um_Freeze")
     time.sleep(5)
     browser.select("Month","2")
     browser.select("Reason","Holiday")
-    browser.select("Date","2")
-    browser.click_link_by_text("um_FreezeSubmit")
+    freez_date_button = browser.find_by_id('um_datepicker2').fill('Date','04/30/2014')
+
+    freeze_submit_button = browser.find_by_id("um_FreezeSubmit")
     browser.click_link_by_value("Proceed")
 
   
