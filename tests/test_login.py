@@ -357,7 +357,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     leave_confirm_button = browser.find_by_id('um_SubmitQ').click()
     
     time.sleep(5)
-    element8 = find_by_id(choices_8).check()
+    element8 = browser.find_by_id(choices_8).check()
     leave_submit_button = browser.find_by_id('um_Submit2').click()
     leave_submit_OK_button = browser.find_by_id('alertify-ok').click()
     leave_submit_OK_button = browser.find_by_id('alertify-ok').click()
