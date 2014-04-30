@@ -202,7 +202,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_9 (self):
+  def _test_Scenario_9 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -272,7 +272,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_12 (self):
+  def test_Scenario_12 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -282,16 +282,20 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     login_button = browser.find_by_id("edit-submit")[0]
     login_button.click()
+    
     time.sleep(10) 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
     browser.click_link_by_text("Manage Membership")
+    
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
-    addon_button = browser.find_by_css('.inner-item')
+    addon_button = browser.find_by_id('thirstybuster')
     addon_button.click()
-    browser.click_link_by_id("edit-adonsubmit")
+    addon_upgrade_button = browser.find_by_id("edit-adonsubmit").click()
+    
     time.sleep(10)
-    browser.click_link_by_id("um_SubmitI")
+    addon_submit_button = browser.find_by_id("um_SubmitI").click()
+    
     time.sleep(10)
     self.assertEqual(browser.url, 'https://www.mobile88.com/epayment/ConfirmationPage.asp') 
 
