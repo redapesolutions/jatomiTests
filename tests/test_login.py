@@ -7,13 +7,9 @@ import time
 base_url = django.conf.settings.BASE_URL
 
 class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
-  def setUp(self):
-    super(LoginTest, self).setUp()
-    self.browser.visit('{0}/{1}'.format(base_url, ''))
+  
+  def login():
 
-  @test_utilities.e2e.email_on_failure
-  @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_1_2_3 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -25,6 +21,16 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
     login_button.click()
 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+
+  def setUp(self):
+    super(LoginTest, self).setUp()
+    self.browser.visit('{0}/{1}'.format(base_url, ''))
+
+  @test_utilities.e2e.email_on_failure
+  @test_utilities.e2e.snap_on_failure
+  def _test_Scenario_1_2_3 (self):
+
+    login()
     
     time.sleep(15)
     overview_button = browser.find_by_id('SS')
@@ -47,17 +53,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_4 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
     
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
-
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
     
     time.sleep(10)
     topUp_button = browser.find_by_id('topUp')
@@ -85,17 +82,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_5 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
     
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
-
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
     
     time.sleep(10)
     topUp_button = browser.find_by_id('topUp')
@@ -115,18 +103,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_6 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
+  def _test_Scenario_6 (self):
     
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
-
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
     
     time.sleep(10)
     topUp_button = browser.find_by_id('topUp')
@@ -147,17 +126,8 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_7 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
     
     time.sleep(10)
     topUp_button = browser.find_by_id('topUp')
@@ -174,18 +144,10 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_8 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
+  def test_Scenario_8 (self):
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
@@ -203,17 +165,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_9 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
@@ -223,17 +177,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_10 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
@@ -242,17 +188,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_11 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Personal Settings")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/settings'))
@@ -269,17 +207,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_12 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Manage Membership")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
@@ -296,17 +226,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_13 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Manage Membership")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
@@ -323,17 +245,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_13_13 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
+    login()
+
     browser.click_link_by_text("Manage Membership")
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
@@ -350,17 +264,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_14 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))  
+    login()
+
     browser.click_link_by_text("My Calendar")
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/buy_pt_session')) 
     pt_section = browser.find_by_css('.views-row').click()
@@ -375,17 +281,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_15 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))  
+    login()
+
     browser.click_link_by_text("My Calendar")
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/buy_pt_session')) 
     browser.click_link_by_text("Book Personal Training")
@@ -399,17 +297,9 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
   def _test_Scenario_16 (self):
-    browser = self.browser
-    browser.click_link_by_text("Login")
-    
-    time.sleep(18)
-    browser.fill('name','jatomitest@gmail.com')
-    browser.fill('pass','pleaseohplease')
 
-    login_button = browser.find_by_id("edit-submit")[0]
-    login_button.click()
-    time.sleep(10) 
-    self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview')) 
+    login()
+
     browser.click_link_by_text("Interest & Goals")
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/interest_goals')) 
     time.sleep(10)
