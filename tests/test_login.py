@@ -303,7 +303,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def test_Scenario_13 (self):
+  def _test_Scenario_13 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -313,12 +313,15 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     login_button = browser.find_by_id("edit-submit")[0]
     login_button.click()
+    
     time.sleep(10) 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
     browser.click_link_by_text("Manage Membership")
+    
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
-    freeze_button = browser.find_by_css(".um_Freeze")
+    freeze_button = browser.find_by_css(".um_Freeze").click()
+    
     time.sleep(5)
     browser.select("Month","2")
     browser.select("Reason","Holiday")
@@ -331,7 +334,7 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
  
   @test_utilities.e2e.email_on_failure
   @test_utilities.e2e.snap_on_failure
-  def _test_Scenario_13_13 (self):
+  def test_Scenario_13_13 (self):
     browser = self.browser
     browser.click_link_by_text("Login")
     
@@ -341,18 +344,21 @@ class LoginTest(test_utilities.e2e.E2ETestBigDesktop):
 
     login_button = browser.find_by_id("edit-submit")[0]
     login_button.click()
+    
     time.sleep(10) 
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/overview'))
     browser.click_link_by_text("Manage Membership")
+    
     time.sleep(10)
     self.assertEqual(browser.url, '{0}/{1}'.format(base_url, 'jatomi/en/dashboard/manage'))
-    browser.click_link_by_name("reset")
+    leave_button = browser.find_by_css(".um_Cancel").click()
+    
     time.sleep(5)
-    browser.click_link_by_id("um_SubmitQ")
+    leave_confirm_button = browser.find_by_id("um_SubmitQ").click()
+    
     time.sleep(5)
-    element8 = find_by_id(choices_8)
-    element8.check()
-    browser.click_link_by_id("um_Submit2")
+    element8 = find_by_id(choices_8).check()
+    leave_submit_button = browser.find_by_id("um_Submit2").click()
 
   
   
